@@ -8,6 +8,10 @@ module Mux
     end
 
     def create
+      pp "###########################"
+      pp request.body.read
+      pp "###########################"
+
       Mux::Notifications.instrument(event)
       head :ok
     end

@@ -8,46 +8,31 @@ module Mux
 
     transform_keys(&:to_sym)
 
-    # Make top-level attributes more flexible
-    attribute? :id, Types::String
+    attribute :id, Types::String
     attribute :type, Types::String
-    attribute? :created_at, Types::JSON::Time
+    attribute :created_at, Types::JSON::Time
 
-    # Make these nested structures optional
-    attribute? :object do
+    attribute :object do
       attribute :id, Types::Coercible::String
       attribute :type, Types::Coercible::String
     end
 
-    attribute? :environment do
+    attribute :environment do
       attribute :id, Types::Coercible::String
       attribute :name, Types::Coercible::String
     end
 
     attribute :data do
-      # Keep id and status required but make asset_id an alternative
-      attribute? :id, Types::Coercible::String
-      attribute? :status, Types::Coercible::String
-      attribute? :asset_id, Types::Coercible::String
-      attribute? :created_at, Types::Coercible::Integer
+      attribute :id, Types::Coercible::String
+      attribute :status, Types::Coercible::String
+      attribute :created_at, Types::Coercible::Integer
 
-      # Keep all these optional
       attribute? :aspect_ratio, Types::Coercible::String
       attribute? :duration, Types::Coercible::Float
       attribute? :master_access, Types::Coercible::String
       attribute? :max_stored_frame_rate, Types::Coercible::Float
       attribute? :max_stored_resolution, Types::Coercible::String
       attribute? :mp4_support, Types::Coercible::String
-
-      # Added fields from error payloads
-      attribute? :resolution, Types::Coercible::String
-      attribute? :name, Types::Coercible::String
-      attribute? :ext, Types::Coercible::String
-      attribute? :resolution_tier, Types::Coercible::String
-      attribute? :height, Types::Coercible::Integer
-      attribute? :width, Types::Coercible::Integer
-      attribute? :filesize, Types::Coercible::Integer
-      attribute? :bitrate, Types::Coercible::Integer
 
       attribute? :stream_key, Types::Coercible::String
       attribute? :reconnect_window, Types::Coercible::Integer
