@@ -25,7 +25,7 @@ module Mux
     attribute :data do
       attribute :id, Types::Coercible::String
       attribute :status, Types::Coercible::String
-      attribute :created_at, Types::Coercible::Integer
+      attribute? :created_at, Types::Coercible::Integer
 
       attribute? :aspect_ratio, Types::Coercible::String
       attribute? :duration, Types::Coercible::Float
